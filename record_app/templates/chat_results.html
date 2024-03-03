@@ -56,17 +56,39 @@
                     </tr>
                 {% endfor %}
             </tbody>
-        </table>        
+        </table> 
+    {% elif facility_results %}
+        <table id="search-results-table" class="display">
+            <thead>
+                <tr>
+                    <th>HDSSrecord</th>
+                    <th>Date of Birth recorded at HDSS</th>
+                    <th>Sex HDSS</th>
+                    <th>Pet Name at Hdss</th>
+                    <th>HDSS ID</th>
+                    <th>HDSS HHID</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for results in facility_results %}
+                    <tr>
+                        <td contenteditable="true">{{ results.firstname }} {{ results.lastname }}</td>
+                        <td contenteditable="true">{{ results.dob }}</td>
+                        <td contenteditable="true" >{{ results.sex }}</td>
+                        <td contenteditable="true" >{{ results.petname }}</td>
+                        <td>{{ results.patientid }}</td>
+                        <td>{{ results.visitdate }}</td>
+                        
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>  
     {% else %}
         <!-- No matches found -->
         <p>No matches found.</p>
-    {% endif %}
+    {% endif %}      
     
-    <!-- Display similar data if available -->
-    {% if similar_data %}
-        <h2>Similar Data:</h2>
-        <!-- Render similar data here -->
-    {% endif %}
+
 
     <script>
         $(document).ready(function() {
