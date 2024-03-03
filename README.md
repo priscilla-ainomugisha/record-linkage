@@ -31,4 +31,10 @@ uvicorn record_project.asgi:application
 ```
 
 The Django application will be accessible at `http://127.0.0.1:8000/`.
+my sql database configurations have been used for the django models
 
+## Team members
+Namuli Sylvia: namuli917@gmail.com (team lead)
+Ainomugisha Priscilla:ainomugishapriscilla00@gmail.com 
+Aheebwomugisha Sasha Ana:sashaana123@gmail.com
+more details--> [record-linkage.docx](record-linkage.docx)
