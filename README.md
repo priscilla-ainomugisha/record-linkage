@@ -2,6 +2,8 @@
 
 Welcome to the Artificial Intelligence Record Linkage project! This project aims to link records in HDSS communities within the inspire network present in two different datasets. It facilitates the allocation and linking of common data between the HDSS dataset and the facility dataset.
 
+Video walkthrough of project --> https://drive.google.com/drive/folders/1CX76uvXSDwwAsS6zfKfHFIHBSskVGlFc?usp=sharing
+
 ## Documentation
 
 For detailed documentation on how to install, use, and contribute to this project, please refer to the [record-linkage.docx](record-linkage.docx) file.
