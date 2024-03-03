@@ -4,7 +4,7 @@ Welcome to the Artificial Intelligence Record Linkage project! This project aims
 
 ## Documentation
 
-For detailed documentation on how to install, use, and contribute to this project, please refer to the [record-linkage.doc](record-linkage.doc) file.
+For detailed documentation on how to install, use, and contribute to this project, please refer to the [record-linkage.docx](record-linkage.docx) file.
 
 ## Requirements
 
