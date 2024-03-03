@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}Search Results{% endblock %}
+
+{% block content %}
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+            <ol>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li>Search Results</li>
+            </ol>
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+
+    <h1>Search Results</h1>
+    
+    {% if search_results %}
+        <!-- Matches found -->
+        <h2>Matches Found:</h2>
+        <ul>
+            {% for result in search_results %}
+            <li>
+                <p>Match: {{ result.0.firstname }} {{ result.0.lastname }} - {{ result.1.firstname }} {{ result.1.lastname }}</p>
+                <p>Date of Birth: {{ result.0.dob_x }} {{ result.1.dob_x }}</p>
+                <p>Sex: {{ result.0.sex }} {{ result.1.sex }}</p>
+                <p>National ID: {{ result.0.nationalid }} {{ result.1.nationalid }}</p>
+                <p>Pet Name: {{ result.0.petname }} {{ result.1.petname }}</p>
+                <p>Patient ID: {{ result.0.patientid }} {{ result.1.patientid }}</p>
+                <p>Visit Date: {{ result.0.visitdate }} {{ result.1.visitdate }}</p>
+                <p>HDSS ID: {{ result.0.hdssid }} {{ result.1.hdssid }}</p>
+                <p>HDSS HHID: {{ result.0.hdsshhid }} {{ result.1.hdsshhid }}</p>
+                <!-- Add other fields as needed -->
+            </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <!-- No matches found -->
+        <p>No matches found.</p>
+    {% endif %}
+    
+    <!-- Display similar data if available -->
+    {% if similar_data %}
+        <h2>Similar Data:</h2>
+        <ul>
+            {% for data in similar_data %}
+            <li>
+                <p>Similar: {{ data.0.firstname }} {{ data.0.lastname }} - {{ data.1.firstname }} {{ data.1.lastname }}</p>
+                <p>Date of Birth: {{ data.0.dob_x }} {{ data.1.dob_x }}</p>
+                <p>Sex: {{ data.0.sex }} {{ data.1.sex }}</p>
+                <p>National ID: {{ data.0.nationalid }} {{ data.1.nationalid }}</p>
+                <p>Pet Name: {{ data.0.petname }} {{ data.1.petname }}</p>
+                <p>Patient ID: {{ data.0.patientid }} {{ data.1.patientid }}</p>
+                <p>Visit Date: {{ data.0.visitdate }} {{ data.1.visitdate }}</p>
+                <p>HDSS ID: {{ data.0.hdssid }} {{ data.1.hdssid }}</p>
+                <p>HDSS HHID: {{ data.0.hdsshhid }} {{ data.1.hdsshhid }}</p>
+                <!-- Add other fields as needed -->
+            </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}

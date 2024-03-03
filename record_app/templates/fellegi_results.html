@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fellegi Results</title>
+</head>
+<body>
+    <h1>Search Results</h1>
+    
+    {% if search_results %}
+        {% if search_results.matching_pair %}
+            <h2>Matching Patient Found:</h2>
+            <p>First Name: {{ search_results.matching_pair.0.firstname }}</p>
+            <p>Last Name: {{ search_results.matching_pair.0.lastname }}</p>
+            <p>Pet Name: {{ search_results.matching_pair.0.petname }}</p>
+            <p>Date of Birth: {{ search_results.matching_pair.0.dob }}</p>
+            <p>Sex: {{ search_results.matching_pair.0.sex }}</p>
+            <p>National ID: {{ search_results.matching_pair.0.nationalid }}</p>
+            <p>Patient ID: {{ search_results.matching_pair.0.patientid }}</p>
+            <p>Visit Date: {{ search_results.matching_pair.0.visitdate }}</p>
+            <!-- Add other patient details as needed -->
+            <hr>
+            <h2>Corresponding Record in HDSS Dataset:</h2>
+            <p>First Name: {{ search_results.unmatching_pair.0.firstname }}</p>
+            <p>Last Name: {{ search_results.matching_pair.1.lastname }}</p>
+            <p>Pet Name: {{ search_results.matching_pair.1.petname }}</p>
+            <p>Date of Birth: {{ search_results.matching_pair.1.dob }}</p>
+            <p>Sex: {{ search_results.matching_pair.1.sex }}</p>
+            <p>HDSS ID: {{ search_results.matching_pair.1.hdssid }}</p>
+            <p>HDSS House ID: {{ search_results.matching_pair.1.hdsshhid }}</p>
+            <!-- Add other HDSS record details as needed -->
+        {% else %}
+            <p>No matching patient found.</p>
+    
+        {% endif %}
+        
+        <!-- Display additional information based on search results -->
+        {% if search_results.similar_data %}
+            <h2>Similar Patient Data:</h2>
+            <!-- Display similar patient data -->
+            <hr>
+            <p>First Name: {{ search_results.similar_data.0.firstname }}</p>
+            <p>Last Name: {{ search_results.similar_data.0.lastname }}</p>
+        {% endif %}
+
+        {% if search_results.unmatching_pair %}
+            <h2>Unmatching Patient Found:</h2>
+            <!-- Display unmatching patient data -->
+            <hr>
+            <p>First Name: {{ search_results.unmatching_pair.0.firstname }}</p>
+            <p>Last Name: {{ search_results.unmatching_pair.0.lastname }}</p>
+            <p>Pet Name: {{ search_results.unmatching_pair.0.petname }}</p>
+            <p>Date of Birth: {{ search_results.unmatching_pair.0.dob }}</p>
+            <p>Sex: {{ search_results.unmatching_pair.0.sex }}</p>
+            <p>National ID: {{ search_results.unmatching_pair.0.national_id }}</p>
+            <p>Patient ID: {{ search_results.unmatching_pair.0.patient_id }}</p>
+            <p>Visit Date: {{ search_results.unmatching_pair.0.visit_date }}</p>
+        {% endif %}
+
+<!-- Display highest and lowest scores -->
+        <p>Highest Score: {{ search_results.highest_score }}</p>
+        <p>Lowest Score: {{ search_results.lowest_score }}</p>
+    {% else %}
+        <p>No search results available.</p>
+    {% endif %}
+</body>
+</html>

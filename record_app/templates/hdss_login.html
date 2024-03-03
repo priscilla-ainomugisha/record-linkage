@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}Facility Staff Login{% endblock %}
+
+{% block content %}
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+            <ol>
+                <li><a href="index.html">Home</a></li>
+                <li>Login</li>
+            </ol>
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section id="login_form" class="login_form">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="login-form">
+                        <h2 class="text-center">Hdss Staff Login</h2>
+                        <form method="post" action="{% url 'facility_staff_login' %}" class="registration_form">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="id_username">Username:</label>
+                                <input type="text" name="username" id="id_username" class="form-control" style="margin-bottom: 10px;">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="id_password">Password:</label>
+                                <input type="password" name="password" id="id_password" class="form-control" style="margin-bottom: 10px;">
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn-block">Login</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    {% if messages %}
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    {% for message in messages %}
+                        <div class="alert alert-info" role="alert">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+{% endblock %}

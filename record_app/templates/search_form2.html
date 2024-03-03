@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Search Patient{% endblock %}
+
+{% block content %}
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+            <ol>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li>Search Patient</li>
+            </ol>
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section id="search_patient" class="search-patient">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="search-form">
+                        <h2 class="text-center">Search Patient</h2>
+                        <form method="post" action="{% url 'hdss_view' %}" class="search-form">
+                            {% csrf_token %}
+                            <div class="input-group">
+                                <input type="text" name="search_name" class="form-control mr-3" placeholder="Enter patient name">
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-primary">Search</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!--<div class="text-center mt-4">
+        <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
+    </div>-->
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block title %}Search Results{% endblock %}
+
+{% block content %}
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+            <ol>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li>Search Results</li>
+            </ol>
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+
+    {% if search_results %}
+        <!-- Matches found -->
+        <h3>Matches Found:</h3>
+
+        <table id="search-results-table" class="display">
+            <thead>
+                <tr>
+                    <th>Facility record</th>
+                    <th>HDSS record</th>
+                    <th>Date of Birth recorded at facility</th>
+                    <th>Date of Birth recorded at Hdss</th>
+                    <th>Sex Facility</th>
+                    <th>Sex HDSS</th>
+                    <th>National ID</th>
+                    <th>Pet Name at facility</th>
+                    <th>Pet Name at Hdss</th>
+                    <th>Patient ID</th>
+                    <th>Visit Date</th>
+                    <th>HDSS ID</th>
+                    <th>HDSS HHID</th>
+                    <!-- Add other fields as needed -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for result in search_results %}
+                    <tr>
+                        <td contenteditable="true">{{ result.0.firstname }} {{ result.0.lastname }}</td>  <!-- Assuming 'facility' is a field in result.0 -->
+                        <td contenteditable="true">{{ result.1.firstname }} {{ result.1.lastname }}</td>  <!-- Assuming 'hdss' is a field in result.1 -->
+                        <td contenteditable="true" {% if result.0.dob != result.1.dob %} style="background-color: rgba(238, 4, 4, 0.122);" {% endif %}>{{ result.0.dob }}</td>
+                        <td contenteditable="true" {% if result.0.dob != result.1.dob %} style="background-color: rgba(238, 4, 4, 0.122);" {% endif %}>{{ result.1.dob }}</td>
+                        <td contenteditable="true" {% if result.0.sex != result.1.sex %} style="background-color: rgba(238, 4, 4, 0.122);" {% endif %}>{{ result.0.sex }}</td>
+                        <td contenteditable="true" {% if result.0.sex != result.1.sex %} style="background-color: rgba(238, 4, 4, 0.122);" {% endif %}>{{ result.1.sex }}</td>
+                        <td contenteditable="true">{{ result.1.nationalid }}</td>
+                        <td contenteditable="true" {% if result.0.petname != result.1.petname %} style="background-color: rgba(238, 4, 4, 0.122);" {% endif %}>{{ result.0.petname }}</td>
+                        <td contenteditable="true" {% if result.0.petname != result.1.petname %} style="background-color: rgba(238, 4, 4, 0.122)" {% endif %}>{{ result.1.petname }}</td>
+                        <td>{{ result.0.patientid }}</td>
+                        <td>{{ result.0.visitdate }}</td>
+                        <td>{{ result.1.hdssid }}</td>
+                        <td>{{ result.1.hdsshhid }}</td>
+                        <!-- Add other fields as needed -->
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>        
+    {% else %}
+        <!-- No matches found -->
+        <p>No matches found.</p>
+    {% endif %}
+    
+    <!-- Display similar data if available -->
+    {% if similar_data %}
+        <h2>Similar Data:</h2>
+        <!-- Render similar data here -->
+    {% endif %}
+
+    <script>
+        $(document).ready(function() {
+            $('#search-results-table').DataTable();
+        });
+    </script>
+{% endblock %}

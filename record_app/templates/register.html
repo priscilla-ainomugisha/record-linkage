@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+    <section id="breadcrumbs" class="breadcrumbs">
+        <div class="container">
+            <ol>
+                <li><a href="index.html">Home</a></li>
+                <li>Register</li>
+            </ol>
+            <h2>Registration form</h2>
+        </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section id="django_form" class="django_form">
+        <div class="form-group">
+            <form method="post" class="registration_form" id="registration_form">
+                {% csrf_token %}
+                <div class="form-field">
+                    <p><label for="id_first_name">First Name:</label>
+                    {{ form.first_name }}</p>
+                </div>
+                <div class="form-field">
+                    <p><label for="id_last_name">Last Name:</label>
+                    {{ form.last_name }}</p>
+                </div>
+                <div class="form-field">
+                    <p><label for="id_username">Username:</label>
+                    {{ form.username }}</p> 
+                    <small>Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</small>
+                </div>
+                <div class="form-field">
+                    <p><label for="id_email">Email:</label>
+                    {{ form.email }}</p>
+                </div>
+                <div class="form-field">
+                    <p><label for="id_password">Password:</label>
+                    {{ form.password1 }}</p>
+                    <small>
+                        Your password can’t be too similar to your other personal information.<br>
+                        Your password must contain at least 8 characters.<br>
+                        Your password can’t be a commonly used password.<br>
+                        Your password can’t be entirely numeric.
+                    </small>
+                </div>
+                <div class="form-field">
+                    <p><label for="id_password_confirmation">Confirm Password:</label>
+                    {{ form.password2 }}</p>
+                    <small>Enter the same password as before, for verification.</small>
+                </div>
+                <p><button type="submit" class="btn btn-primary">Register</button></p>
+            </form>
+        </div>
+    </section>
+{% endblock %}
